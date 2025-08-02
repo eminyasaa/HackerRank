@@ -1,0 +1,54 @@
+--Weather Observatıon Statıon 13
+
+SELECT 
+    ROUND(SUM(LAT_N), 2), 
+    ROUND(SUM(LONG_W), 2) 
+FROM STATION;
+SORU2
+SELECT ROUND (SUM(LAT_N),4) FROM STATION
+ WHERE LAT_N > 38.7880 AND LAT_N < 137.2345 ;
+
+--Weather Observatıon Statıon 14
+
+SELECT ROUND(MAX(LAT_N), 4) FROM STATION 
+WHERE LAT_N < 137.2345;
+
+--Weather Observatıon Statıon 15
+
+SELECT ROUND(LONG_W, 4) 
+FROM STATION
+WHERE LAT_N < 137.2345
+ORDER BY LAT_N DESC
+LIMIT 1;
+
+--Weather Observatıon Statıon 16
+
+SELECT ROUND(MIN(LAT_N), 4) 
+FROM STATION
+WHERE LAT_N > 38.7780 ;
+
+
+--Weather Observatıon Statıon 17
+
+ELECT ROUND(LONG_W, 4) AS western_longitude
+FROM STATION
+WHERE LAT_N = (
+  SELECT MIN(LAT_N)
+  FROM STATION
+  WHERE LAT_N > 38.7780
+ );
+
+--Population Census
+
+SELECT SUM(CITY.Population)
+FROM CITY 
+JOIN COUNTRY ON CITY.CountryCode = COUNTRY.Code
+WHERE COUNTRY.Continent ='Asia' ;
+
+--African Cities 
+
+SELECT CITY.name
+FROM CITY
+JOIN COUNTRY ON CITY.CountryCode = COUNTRY.Code 
+WHERE COUNTRY.Continent = 'Africa'
+
